@@ -1,0 +1,31 @@
+{
+  "name": "frontend-code-review",
+  "version": "1.0.0",
+  "description": "Frontend-focused code review guidance for UI, component, styling, interaction, accessibility, and responsive behavior changes.",
+  "author": {
+    "name": "Provenr"
+  },
+  "license": "MIT",
+  "keywords": [
+    "frontend",
+    "code-review",
+    "ui",
+    "accessibility",
+    "responsive"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Frontend Code Review",
+    "shortDescription": "Review frontend changes for UI, behavior, and accessibility risks",
+    "longDescription": "Frontend-focused review guidance for component changes, CSS/layout work, responsive behavior, accessibility, client-side interactions, and visual QA.",
+    "developerName": "Provenr",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read"
+    ],
+    "defaultPrompt": [
+      "Review these frontend changes.",
+      "Audit this UI implementation for behavior, accessibility, and responsive issues."
+    ]
+  }
+}

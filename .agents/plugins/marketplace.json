@@ -5,10 +5,22 @@
   },
   "plugins": [
     {
-      "name": "andrej-karpathy-skills",
+      "name": "code-behavioral-guidelines",
       "source": {
         "source": "local",
-        "path": "./plugins/andrej-karpathy-skills"
+        "path": "./plugins/code-behavioral-guidelines"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "frontend-code-review",
+      "source": {
+        "source": "local",
+        "path": "./plugins/frontend-code-review"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -1,0 +1,5 @@
+display_name: Frontend Code Review
+short_description: Review frontend changes for UI, behavior, accessibility, and responsive risks.
+default_prompt:
+  - Review these frontend changes.
+  - Audit this UI implementation for behavior, accessibility, and responsive issues.

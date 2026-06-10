@@ -10,12 +10,12 @@
   },
   "plugins": [
     {
-      "name": "andrej-karpathy-skills",
+      "name": "code-behavioral-guidelines",
       "source": "./",
       "description": "Behavioral guidelines to reduce common LLM coding mistakes: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution",
       "version": "1.0.0",
       "author": {
-        "name": "forrestchang"
+        "name": "provenr"
       },
       "keywords": [
         "guidelines",
@@ -23,7 +23,24 @@
         "coding",
         "karpathy"
       ],
-      "category": "workflow"
+      "category": "Developer Tools"
+    },
+    {
+      "name": "frontend-code-review",
+      "source": "./",
+      "description": "Frontend-focused code review guidance for UI, component, styling, interaction, accessibility, and responsive behavior changes.",
+      "version": "1.0.0",
+      "author": {
+        "name": "provenr"
+      },
+      "keywords": [
+        "frontend",
+        "code-review",
+        "ui",
+        "accessibility",
+        "responsive"
+      ],
+      "category": "Developer Tools"
     }
   ]
 }
