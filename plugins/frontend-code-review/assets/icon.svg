@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Frontend Code Review icon">
+  <defs>
+    <linearGradient id="bg" x1="160" y1="120" x2="864" y2="904" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="308" y1="270" x2="760" y2="734" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="26" stdDeviation="30" flood-color="#020617" flood-opacity="0.32"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="232" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="190" y="206" width="644" height="496" rx="72" fill="#f8fafc"/>
+    <rect x="190" y="206" width="644" height="96" rx="72" fill="#e2e8f0"/>
+    <circle cx="270" cy="254" r="22" fill="#ef4444"/>
+    <circle cx="338" cy="254" r="22" fill="#f59e0b"/>
+    <circle cx="406" cy="254" r="22" fill="#22c55e"/>
+    <path d="M392 424 300 512l92 88" fill="none" stroke="#0f172a" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M632 424 724 512l-92 88" fill="none" stroke="#0f172a" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M554 386 470 638" fill="none" stroke="#64748b" stroke-width="48" stroke-linecap="round"/>
+  </g>
+  <circle cx="704" cy="688" r="162" fill="url(#accent)" stroke="#f8fafc" stroke-width="34"/>
+  <path d="M618 686 677 745 796 613" fill="none" stroke="#ffffff" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M256 792h292" fill="none" stroke="#38bdf8" stroke-width="48" stroke-linecap="round" opacity="0.9"/>
+</svg>

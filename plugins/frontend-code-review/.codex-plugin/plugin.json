@@ -20,6 +20,9 @@
     "longDescription": "Frontend-focused review guidance for component changes, CSS/layout work, responsive behavior, accessibility, client-side interactions, and visual QA.",
     "developerName": "Provenr",
     "category": "Developer Tools",
+    "brandColor": "#0F172A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
     "capabilities": [
       "Read"
     ],

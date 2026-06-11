@@ -1,10 +1,9 @@
 {
   "name": "code-behavioral-guidelines",
   "version": "1.0.0",
-  "description": "Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+  "description": "帮助编码智能体减少常见错误的行为准则，强调先思考、保持简单、精准修改和可验证交付。",
   "author": {
-    "name": "provenr",
-    "description": "fork from forrestchang/andrej-karpathy-skills"
+    "name": "Provenr"
   },
   "license": "MIT",
   "keywords": [
@@ -15,18 +14,21 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Code Behavioral Guidelines",
-    "shortDescription": "Guidelines for simpler, more careful coding-agent work",
-    "longDescription": "Behavioral guidelines that help coding agents think before coding, keep changes simple, make surgical edits, and define verifiable success criteria.",
-    "developerName": "provenr",
+    "displayName": "代码行为准则",
+    "shortDescription": "让编码智能体更谨慎、更简单、更精准地完成任务",
+    "longDescription": "一套面向编码智能体的行为准则：编码前先澄清假设，优先采用简单方案，只做与目标直接相关的修改，并通过明确的成功标准完成验证。",
+    "developerName": "Provenr",
     "category": "Developer Tools",
+    "brandColor": "#0F172A",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
     "capabilities": [
       "Read",
       "Write"
     ],
     "defaultPrompt": [
-      "Use Karpathy-style coding guidelines for this task.",
-      "Review this change for overcomplication and unnecessary edits."
+      "使用代码行为准则完成此任务。",
+      "检查这次修改是否存在过度设计或无关改动。"
     ]
   }
 }
