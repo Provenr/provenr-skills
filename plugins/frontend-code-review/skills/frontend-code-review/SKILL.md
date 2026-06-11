@@ -1,56 +1,93 @@
 ---
 name: frontend-code-review
-description: Use when reviewing frontend pull requests, UI implementation, component changes, CSS/layout, accessibility, responsive behavior, design-system usage, or client-side state/event logic.
-license: MIT
+description: Review frontend code for correctness, accessibility, component design, design-system usage, data/query boundaries, performance, and tests. Trigger for `.tsx`, `.ts`, `.vue`, `.js`, UI, React, Vue, Next.js, Nuxt, pending-change, or focused frontend review requests.
 ---
 
 # Frontend Code Review
 
-## Review Stance
+## When To Use
 
-Act as a frontend reviewer. Prioritize user-visible bugs, regressions, accessibility failures, broken interactions, layout problems, data/state issues, and missing verification. Avoid broad refactors, taste-only feedback, or commentary that cannot be tied to a concrete risk.
+Use this skill when the user asks to review, audit, analyze, or sanity-check frontend code or frontend-adjacent TypeScript/JavaScript files.
 
-## Workflow
+Supported modes:
 
-1. Establish scope:
-   - Inspect the changed files and nearby code before judging.
-   - Identify the framework, routing/state libraries, styling system, design system, test setup, and available scripts from the repo.
-   - If a change touches generated files or vendored assets, verify the source of truth before commenting.
+- **Pending-change review**: inspect staged and working-tree changes.
+- **File-focused review**: inspect explicitly named files or paths.
+- **Diff/snippet review**: review pasted diffs or snippets using best-effort references.
 
-2. Review behavior first:
-   - Component props, emits/events, state lifetimes, async loading, error/empty states, forms, validation, focus handling, keyboard behavior, navigation, and persistence.
-   - Check that loading, disabled, failure, and partial-data states do not create dead ends or misleading UI.
-   - Look for stale closures, unhandled promise paths, duplicate side effects, hydration mismatches, and client/server boundary mistakes.
+Do not use this skill for backend-only code; use a backend review skill instead.
 
-3. Review UI implementation:
-   - Layout stability across desktop and mobile, overflow, clipping, text wrapping, z-index, sticky/fixed positioning, scroll containers, and dynamic content length.
-   - Styling consistency with existing tokens, components, spacing, typography, icons, and interaction states.
-   - Avoid approving UI that only works for the happy-path screenshot.
+## Required Context
 
-4. Review accessibility:
-   - Semantic elements, labels, names, roles, heading order, focus order, visible focus, keyboard-only use, ARIA validity, touch target size, contrast, reduced motion, and screen-reader-only content.
-   - Prefer native HTML controls over custom ARIA widgets unless the custom behavior is justified and complete.
+Before reviewing, read the relevant local contracts when they exist:
 
-5. Verify appropriately:
-   - Run the smallest relevant checks available: typecheck, lint, unit/component tests, and targeted build.
-   - For visible UI changes, use the local app or browser when feasible. Inspect at least one desktop and one mobile-sized viewport.
-   - If the app cannot run, state the exact blocker and review from static evidence.
+- Project `AGENTS.md`, `ClAUDE.md`, or frontend README for workflow, design tokens, state patterns, and test conventions.
+- Design system or component library docs when code uses or changes shared UI primitives.
+- Overlay/floating-UI docs when reviewing dialogs, drawers, popovers, tooltips, menus, selects, or comboboxes.
+- `code-behavioral-guidelines` for scope control and focused, verifiable changes.
 
-## Findings Format
+For any UI, UX, or accessibility review, fetch the latest Web Interface Guidelines before finalizing findings. Treat them as a required baseline, not the complete source of accessibility truth:
 
-Lead with findings, ordered by severity. Each finding must include:
+```text
+https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
+```
 
-- Severity: `[P0]` breaks production or security; `[P1]` major user-visible regression; `[P2]` likely bug or accessibility problem; `[P3]` minor maintainability or polish issue.
-- File and line reference.
-- Concrete scenario: what user action, viewport, data state, or environment exposes the issue.
-- Impact and a practical fix direction.
+If the review depends on a current framework, SDK, browser API, or accessibility behavior and local code does not settle it, check the current official docs first. For browser compatibility, deprecation, or behavior-sensitive frontend APIs, verify MDN or the relevant standard.
 
-If no issues are found, say that clearly and include residual risks or checks that were not run.
+## Rule Packs
 
-## What Not To Do
+Apply every relevant rule pack:
 
-- Do not rewrite the implementation unless the user asks for fixes.
-- Do not block on subjective style preferences when the code matches local conventions.
-- Do not ask for screenshots instead of running the local app when the app is available.
-- Do not claim accessibility, responsive behavior, or visual correctness without evidence.
-- Do not bury serious findings under summaries or compliments.
+- [references/accessibility-ui.md](references/accessibility-ui.md) — accessibility, semantic HTML, focus, forms, keyboard, disabled states, copy, and long-content behavior.
+- [references/design-system.md](references/design-system.md) — design-system primitive usage, overlays, forms, tokens, and component boundaries.
+- [references/component-architecture.md](references/component-architecture.md) — component ownership, props, state, effects, exports, wrappers, and feature organization.
+- [references/data-query-contracts.md](references/data-query-contracts.md) — API contracts, query/mutation patterns, auth/SSR boundaries, URL and client storage state.
+- [references/performance.md](references/performance.md) — React/Vue/SSR performance review rules scoped to real risk.
+- [references/testing.md](references/testing.md) — frontend test review rules.
+- [references/code-quality.md](references/code-quality.md) — general TypeScript, styling, naming, and maintainability rules.
+
+Skip a rule pack when the change clearly does not touch that area. Do not invent project-specific rules that contradict local docs.
+
+## Review Process
+
+1. Identify the review scope. For pending changes, inspect `git diff --stat`, `git diff`, and staged diff if relevant. For file-focused reviews, stay within the named files unless a referenced owner/contract must be read.
+2. Read code around the changed lines and the owning module. Do not review isolated snippets when nearby ownership, labels, query inputs, or overlay structure decide correctness.
+3. Check user-visible regressions first: accessibility, broken interaction, auth/permission leaks, query/hydration errors, data loss, navigation mistakes, and impossible states.
+4. Then check maintainability and performance: ownership, effects, wrappers, memoization, bundle/waterfall risks, tests, and design-system drift.
+5. Report only actionable findings. Do not list speculative risks, style preferences, or broad refactors unless they are directly tied to a reproducible issue in scope.
+
+## Severity
+
+- **P0**: security/privacy/auth leak, data loss, production crash, inaccessible critical flow, or broken primary workflow.
+- **P1**: user-visible regression, hydration/SSR failure, invalid API/query contract, broken keyboard/focus behavior, or serious design-system/a11y violation.
+- **P2**: maintainability or performance issue likely to cause bugs, duplicated state, incorrect ownership, missing tests for risky behavior, or non-critical a11y issue.
+- **P3**: minor cleanup with clear value. Omit unless the user asked for a thorough audit.
+
+## Output Format
+
+Lead with findings, ordered by severity. Use this structure:
+
+```markdown
+## Findings
+
+- [P1] Short issue title
+  File: `path/to/file.tsx:123`
+  Why it matters and how to reproduce or reason about it.
+  Suggested fix: concrete fix direction.
+
+## Open Questions
+
+- Question or assumption, if any.
+
+## Summary
+
+Brief secondary context. Mention tests not run or residual risk.
+```
+
+Rules:
+
+- If there are no findings, say `No issues found.` and mention any test gaps or residual risk.
+- Always include file and line when available.
+- Keep findings concrete and reproducible.
+- Do not include praise sections by default.
+- Do not ask to apply fixes unless the user explicitly wants review plus implementation.

@@ -1,7 +1,7 @@
 {
   "name": "frontend-code-review",
   "version": "1.0.0",
-  "description": "Frontend-focused code review guidance for UI, component, styling, interaction, accessibility, and responsive behavior changes.",
+  "description": "Framework-agnostic frontend code review for UI, components, design systems, data/query boundaries, accessibility, performance, and tests.",
   "author": {
     "name": "Provenr"
   },
@@ -17,7 +17,7 @@
   "interface": {
     "displayName": "Frontend Code Review",
     "shortDescription": "Review frontend changes for UI, behavior, and accessibility risks",
-    "longDescription": "Frontend-focused review guidance for component changes, CSS/layout work, responsive behavior, accessibility, client-side interactions, and visual QA.",
+    "longDescription": "Structured frontend review guidance for component architecture, design-system usage, accessibility, data/query contracts, performance, and testing. Works across React, Vue, and Next.js/Nuxt projects.",
     "developerName": "Provenr",
     "category": "Developer Tools",
     "brandColor": "#0F172A",
