@@ -1,52 +1,64 @@
-# Provenr-skills
+# Provenr Skills
 
-A collection of skills for Provenr
+Provenr 的个人 Codex skills 集合，主要用于规范编码行为和前端代码审查。
 
+## Skills
 
-## Install
+### 代码行为准则
 
-** Claude Code Plugin (recommended)**
+插件：`code-behavioral-guidelines`
 
-From within Claude Code, first add the marketplace:
-```
-/plugin marketplace add forrestchang/andrej-karpathy-skills
-```
+帮助编码智能体减少常见错误，强调：
 
-Then install the plugin:
-```
-/plugin install andrej-karpathy-skills@karpathy-skills
-```
+- 编码前明确假设和取舍
+- 优先采用简单、必要的实现
+- 只修改与目标直接相关的内容
+- 定义成功标准并完成验证
 
-This installs the guidelines as a Claude Code plugin, making the skill available across all your projects.
+目录：[plugins/code-behavioral-guidelines](plugins/code-behavioral-guidelines)
 
-**Option B: CLAUDE.md (per-project)**
+### Frontend Code Review
 
-New project:
-```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md
-```
+插件：`frontend-code-review`
 
-Existing project (append):
-```bash
-echo "" >> CLAUDE.md
-curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
-```
+适用于 React、Vue、Next.js、Nuxt 等前端项目的结构化代码审查，覆盖：
 
-**codex plugin marketplace**
+- UI 行为、组件设计和状态管理
+- Design System 和组件边界
+- 可访问性、键盘操作和焦点管理
+- API、查询、SSR 和客户端状态边界
+- 性能风险和测试覆盖
 
-From within Codex, first add the marketplace:
-```
+目录：[plugins/frontend-code-review](plugins/frontend-code-review)
+
+## 安装
+
+在 Codex 中添加 marketplace：
+
+```text
 /plugin marketplace add provenr/provenr-skills
 ```
 
-Then install the plugin:
-```
-/plugin install provenr-skills@provenr-skills
+按需安装插件：
+
+```text
+/plugin install code-behavioral-guidelines@provenr-skills
+/plugin install frontend-code-review@provenr-skills
 ```
 
-## Using with Cursor
+## 仓库结构
 
-This repository includes a committed Cursor project rule ([`.cursor/rules/karpathy-guidelines.mdc`](.cursor/rules/karpathy-guidelines.mdc)) so the same guidelines apply when you open the project in Cursor. See **[CURSOR.md](CURSOR.md)** for setup, using the rule in other projects, and how this relates to Claude Code.
+```text
+plugins/
+├── code-behavioral-guidelines/
+│   ├── .codex-plugin/plugin.json
+│   ├── assets/
+│   └── skills/code-behavioral-guidelines/
+└── frontend-code-review/
+    ├── .codex-plugin/plugin.json
+    ├── assets/
+    └── skills/frontend-code-review/
+```
 
 ## License
 
